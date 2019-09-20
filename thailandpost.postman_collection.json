@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "c528b42f-965f-4eee-8db7-c6621e16b019",
+		"name": "thailandpost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d6aee528-e159-4806-833b-60c30b2a7b95",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.globals.set(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "TWGQ;HEAWE.XICfO/YHSZN*HoWKVcIQA3P@UyZjR$NJV3ArZ+D-QUQSGHHF/S0D!Y#TfZ9BSNCF;YAPZL^E?HzN3OyVwV+KvY#",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://trackapi.thailandpost.co.th/post/api/v1/authenticate/token",
+					"protocol": "https",
+					"host": [
+						"trackapi",
+						"thailandpost",
+						"co",
+						"th"
+					],
+					"path": [
+						"post",
+						"api",
+						"v1",
+						"authenticate",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetItems",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0342605-7b8d-4779-b46c-5b035e748ee3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"status\": \"all\",\n   \"language\": \"TH\",\n   \"barcode\": [\n       \"EY145587896TH\",\n       \"RC338848854TH\"\n  ]\n}"
+				},
+				"url": {
+					"raw": "https://trackapi.thailandpost.co.th/post/api/v1/track",
+					"protocol": "https",
+					"host": [
+						"trackapi",
+						"thailandpost",
+						"co",
+						"th"
+					],
+					"path": [
+						"post",
+						"api",
+						"v1",
+						"track"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
