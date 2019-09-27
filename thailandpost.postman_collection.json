@@ -25,7 +25,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "TWGQ;HEAWE.XICfO/YHSZN*HoWKVcIQA3P@UyZjR$NJV3ArZ+D-QUQSGHHF/S0D!Y#TfZ9BSNCF;YAPZL^E?HzN3OyVwV+KvY#",
+						"value": "Token {{static_token}}",
 						"type": "text"
 					},
 					{
